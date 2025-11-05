@@ -1,13 +1,13 @@
 package rs.digit.bpts.rest;
 
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import rs.digit.bpts.domain.Account;
 import rs.digit.bpts.domain.Transfer;
-import rs.digit.bpts.dto.AccountDTO;
+import rs.digit.bpts.dto.TransferRequestDTO;
+import rs.digit.bpts.dto.TransferResponseDTO;
 import rs.digit.bpts.service.TransferService;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class TransferRest {
     private TransferService service;
 
     @PostMapping("/funds")
-    public Account transferFunds(@RequestBody @Validated AccountDTO dto){
+    public TransferResponseDTO transferFunds(@RequestBody @Valid TransferRequestDTO dto){
         logger.info("Successful transfer from {} to {} for amount of:{}", dto.sourceAccount(), dto.targetAccount(), dto.amount());
         return service.transferFunds(dto);
     }

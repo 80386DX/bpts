@@ -10,8 +10,8 @@ import java.util.Optional;
 
 public interface AccountRepository extends JpaRepository<Account, String> {
 
-    public Optional<Account> findById(@NotNull(message = "Source account id cannot be null") String id);
+    Optional<Account> findById(@NotNull(message = "Source account id cannot be null") String id);
 
-    public List<Account> findAll();
+    List<Account> findAll();
 
 }
