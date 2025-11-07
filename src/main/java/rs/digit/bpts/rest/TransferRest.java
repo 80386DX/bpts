@@ -13,7 +13,7 @@ import rs.digit.bpts.service.TransferService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/transfer")
+@RequestMapping(value = "/transfers")
 public class TransferRest {
 
     private final Logger logger = LoggerFactory.getLogger(TransferRest.class);
@@ -21,17 +21,24 @@ public class TransferRest {
     @Autowired
     private TransferService service;
 
-    @PostMapping("/funds")
+    @PostMapping("/new")
     public TransferResponseDTO transferFunds(@RequestBody @Valid TransferRequestDTO dto){
         logger.info("Successful transfer from {} to {} for amount of:{}", dto.sourceAccount(), dto.targetAccount(), dto.amount());
         return service.transferFunds(dto);
     }
 
 
-    @GetMapping("/getAllTransfers")
+    @GetMapping("/history")
     public List<Transfer> getAll(){
         return service.findAll();
     }
+
+
+    @GetMapping("/history/{id}")
+    public Transfer getTransferById(@PathVariable Long id) {
+        return service.findById(id);
+    }
+
 }
 
 

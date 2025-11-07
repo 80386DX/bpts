@@ -12,7 +12,7 @@ import rs.digit.bpts.service.AccountService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/account")
+@RequestMapping(value = "/accounts")
 public class AccountRest {
 
     private final Logger logger = LoggerFactory.getLogger(AccountRest.class);

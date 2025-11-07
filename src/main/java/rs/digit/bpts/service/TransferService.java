@@ -12,6 +12,7 @@ import rs.digit.bpts.dto.TransferRequestDTO;
 import rs.digit.bpts.dto.TransferResponseDTO;
 import rs.digit.bpts.error.AccountNotFoundException;
 import rs.digit.bpts.error.InsufficientFundsException;
+import rs.digit.bpts.error.TransferNotFoundException;
 import rs.digit.bpts.repos.AccountRepository;
 import rs.digit.bpts.repos.TransferRepository;
 import rs.digit.bpts.common.Status;
@@ -104,6 +105,11 @@ public class TransferService {
 
     public List<Transfer> findAll(){
         return transferRepo.findAll();
+    }
+
+
+    public  Transfer findById(Long id){
+        return transferRepo.findById(id).orElseThrow(() -> new TransferNotFoundException(id));
     }
 
 }

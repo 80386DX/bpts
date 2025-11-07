@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface AccountRepository extends JpaRepository<Account, String> {
 
-    Optional<Account> findById(@NotNull(message = "Source account id cannot be null") String id);
+    Optional<Account> findById(String id);
 
     List<Account> findAll();
 
