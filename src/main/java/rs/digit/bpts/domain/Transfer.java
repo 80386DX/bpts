@@ -1,14 +1,17 @@
 package rs.digit.bpts.domain;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
 @Entity
-//@Getter
-//@Setter
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Transfer {
 
     @Id
@@ -36,57 +39,6 @@ public class Transfer {
 
     @Column
     private LocalDateTime transactionTime = LocalDateTime.now();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public String getSourceAccount() {
-        return sourceAccount;
-    }
-
-    public void setSourceAccount(String sourceAccount) {
-        this.sourceAccount = sourceAccount;
-    }
-
-    public String getDestinationAccount() {
-        return destinationAccount;
-    }
-
-    public void setDestinationAccount(String destinationAccount) {
-        this.destinationAccount = destinationAccount;
-    }
-
-    public LocalDateTime getTransactionTime() {
-        return transactionTime;
-    }
-
-    public void setTransactionTime(LocalDateTime transactionTime) {
-        this.transactionTime = transactionTime;
-    }
-
-    public Transfer(Long id, BigDecimal amount, String sourceAccount, String destinationAccount, LocalDateTime transactionTime) {
-    this.id = id;
-    this.amount = amount;
-    this.sourceAccount = sourceAccount;
-    this.destinationAccount = destinationAccount;
-    this.transactionTime = transactionTime;
-    }
-
-    //To make JPA happy
-    public Transfer(){}
 
 }
 
